@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Editar cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="item.nombre"></ion-input>
+      </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Dirección</ion-label>
+        <ion-input [(ngModel)]="item.direccion"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Teléfono</ion-label>
+        <ion-input type="number" [(ngModel)]="item.telefono"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input [(ngModel)]="item.correo"></ion-input>
+    </ion-item>
+    <ion-button expand="block" fill="outline" (click)="actualizarCliente(item)">Actualizar</ion-button>
+    <ion-button expand="block" fill="outline" (click)="eliminarCliente(item.id)">Eliminar</ion-button>
+    <ion-button expand="block" fill="outline" (click)="regresar()">Regresar</ion-button>
+</div>
+</ion-content>

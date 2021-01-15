@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { LoginPage } from '../login/login.page';
 })
 export class HomePage {
 
-  constructor(public modalController: ModalController) {
+  constructor(public modalController: ModalController,public navCtrl: NavController) {
     this.iniciarSesion();
   }
 
@@ -19,4 +20,8 @@ export class HomePage {
     });
     return await modal.present();
   }  
+
+  irClientes(){
+     this.navCtrl.navigateForward('/clientes');
+  }
 }

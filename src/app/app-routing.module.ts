@@ -16,9 +16,23 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'clientes',
+    loadChildren: () => import('./clientes/clientes.module').then( m => m.ClientesPageModule)
+  },
+  {
+    path: 'agregarcliente',
+    loadChildren: () => import('./agregarcliente/agregarcliente.module').then( m => m.AgregarclientePageModule)
+  },
+  {
+    path: 'detallecliente',
+    loadChildren: () => import('./detallecliente/detallecliente.module').then( m => m.DetalleclientePageModule)
+  },
+  {
     path: 'ventas',
     loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasPageModule)
   },
+];
+
 ];
 
 @NgModule({

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Agregar cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input [(ngModel)]="nombre"></ion-input>
+          </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Dirección</ion-label>
+            <ion-input [(ngModel)]="direccion"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Teléfono</ion-label>
+            <ion-input type="number" [(ngModel)]="telefono"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Correo</ion-label>
+            <ion-input type="string" [(ngModel)]="correo"></ion-input>
+        </ion-item>
+                <ion-button expand="block" fill="outline" (click)="guardarCliente()">Guardar</ion-button>
+        <ion-button expand="block" fill="outline" (click)="cancelar()">Cancelar</ion-button>
+    </div>
+</ion-content>
