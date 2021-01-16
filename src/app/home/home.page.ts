@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
 export class HomePage {
 
   constructor(public modalController: ModalController,public navCtrl: NavController) {
-    this.iniciarSesion();
+    //this.iniciarSesion();
   }
 
   async iniciarSesion() {
@@ -24,4 +24,12 @@ export class HomePage {
   irClientes(){
      this.navCtrl.navigateForward('/clientes');
   }
+
+  irVentas(){
+    this.navCtrl.navigateForward('/ventas');
+  }
+
+ irAgregarVenta(){
+  this.navCtrl.navigateForward('/agregar-venta');
+ }
 }

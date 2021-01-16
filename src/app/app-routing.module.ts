@@ -30,8 +30,10 @@ const routes: Routes = [
   {
     path: 'ventas',
     loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasPageModule)
+  },  {
+    path: 'agregar-venta',
+    loadChildren: () => import('./agregar-venta/agregar-venta.module').then( m => m.AgregarVentaPageModule)
   },
-];
 
 ];
 

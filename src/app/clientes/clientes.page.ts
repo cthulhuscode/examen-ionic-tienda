@@ -12,10 +12,10 @@ import { DetalleclientePage } from '../detallecliente/detallecliente.page';
   styleUrls: ['./clientes.page.scss'],
 })
 export class ClientesPage implements OnInit {
-   backButtonSubscription;
-registros: any;
-listado: [];
-total = 0;
+  backButtonSubscription;
+  registros: any;
+  listado: [];
+  total = 0;
 
   constructor(private router: Router,public http: HttpClient, public modalController: ModalController,) { this.cargarClientes(); }
 
