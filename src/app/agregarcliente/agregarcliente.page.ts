@@ -17,7 +17,8 @@ export class AgregarclientePage implements OnInit {
   url = '';
   respuesta: any;
 
-  constructor(public http: HttpClient, public modalController: ModalController) { }
+  constructor(public http: HttpClient,
+              public modalController: ModalController) { }
   guardarCliente() {
     // const uri = 'https://bdpromo1.000webhostapp.com/api.php?comando=agregar&nombre=' + this.nombre 
     // + '&descripcion=' + this.descripcion

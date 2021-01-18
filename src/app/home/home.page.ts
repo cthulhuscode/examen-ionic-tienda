@@ -10,7 +10,8 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(public modalController: ModalController,public navCtrl: NavController) {
+  constructor(public modalController: ModalController,
+                     public navCtrl: NavController) {
     this.iniciarSesion();
   }
 

@@ -12,12 +12,15 @@ import { DetalleclientePage } from '../detallecliente/detallecliente.page';
   styleUrls: ['./clientes.page.scss'],
 })
 export class ClientesPage implements OnInit {
-   backButtonSubscription;
+backButtonSubscription;
 registros: any;
 listado: [];
 total = 0;
 
-  constructor(private router: Router,public http: HttpClient, public modalController: ModalController,) { this.cargarClientes(); }
+  constructor(private router: Router,
+              public http: HttpClient,
+              public modalController: ModalController,) {
+           this.cargarClientes(); }
 
    cargarClientes() {
     const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=listar&idDueno=1';
