@@ -6,28 +6,30 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-  {
+  /*{
     path: '',
     redirectTo: 'home',
+    pathMatch: 'full'
+  },*/
+  {
+    path: '',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  
   {
     path: 'crudproductos',
-    loadChildren: () => import('./crudproductos/crudproductos.module').then( m => m.CRUDProductosPageModule)
+    loadChildren: () => import('./crudproductos/crudproductos.module').then( m => m.CRUDproductosPageModule)
   },
   {
     path: 'agregarproducto',
     loadChildren: () => import('./agregarproducto/agregarproducto.module').then( m => m.AgregarproductoPageModule)
   },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
+  
   {
     path: 'detalleproducto',
     loadChildren: () => import('./detalleproducto/detalleproducto.module').then( m => m.DetalleproductoPageModule)

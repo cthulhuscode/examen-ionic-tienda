@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 @Component({
-  selector: 'app-agregar',
-  templateUrl: './agregar.page.html',
-  styleUrls: ['./agregar.page.scss'],
+  selector: 'app-agregarproducto',
+  templateUrl: './agregarproducto.page.html',
+  styleUrls: ['./agregarproducto.page.scss'],
 })
-export class AgregarPage implements OnInit {
+export class AgregarproductoPage implements OnInit {
 
   nombre: string;
   descripcion: string;
@@ -18,7 +18,7 @@ export class AgregarPage implements OnInit {
   constructor(public http: HttpClient, public modalController: ModalController) { }
 
   guardarProducto() {
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=agregar' + this.nombre 
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=agregar&idDueno=1&nombre=' + this.nombre 
     + '&descripcion=' + this.descripcion
     + '&preciodecosto=' + this.preciodecosto +
     '&preciodeventa=' + this.preciodeventa +

@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
-import { AgregarPage } from '../agregarproducto/agregarproducto.page';
-import { DetallePage } from '../detalleproducto/detalleproducto.page';
+import { AgregarproductoPage } from '../agregarproducto/agregarproducto.page';
+import { DetalleproductoPage } from '../detalleproducto/detalleproducto.page';
 import { Component } from '@angular/core';
 
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'crudproductos.page.html',
+  styleUrls: ['crudproductos.page.scss'],
 })
-export class HomePage {
+export class CRUDproductosPage {
 backButtonSubscription;
 registros: any;
 listado: [];
@@ -20,7 +20,7 @@ total = 0;
     this.cargarProductos();
   }
   cargarProductos() {
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=listar';
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=listar&idDueno=1';
     this.http.get(uri).subscribe(data => {
       const datos = data;
      // alert('Entro!!');
@@ -31,7 +31,7 @@ total = 0;
   }
   async editarProducto(item) {
     const modal = await this.modalController.create({
-      component: DetallePage,
+      component: DetalleproductoPage,
       componentProps: {dato: item}
     });
     modal.onDidDismiss()
@@ -43,7 +43,7 @@ total = 0;
 
   async presentarAgregar() {
     const modal = await this.modalController.create({
-      component: AgregarPage
+      component: AgregarproductoPage
     });
     modal.onDidDismiss()
     .then(() => {

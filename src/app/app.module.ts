@@ -14,7 +14,7 @@ import { ClientesPageModule } from './clientes/clientes.module';
 import { DetalleclientePageModule } from './detallecliente/detallecliente.module';
 import { AgregarclientePageModule } from './agregarcliente/agregarcliente.module';
 
-import {CRUDProductosPageModule} from './crudproductos/crudproductos.module';
+import { CRUDproductosPageModule } from './crudproductos/crudproductos.module';
 import { DetalleproductoPageModule } from './detalleproducto/detalleproducto.module';
 import { AgregarproductoPageModule } from './agregarproducto/agregarproducto.module';
 
@@ -22,7 +22,7 @@ import { AgregarproductoPageModule } from './agregarproducto/agregarproducto.mod
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LoginPageModule,ClientesPageModule,DetalleclientePageModule, AgregarclientePageModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LoginPageModule,ClientesPageModule,DetalleclientePageModule,AgregarclientePageModule,CRUDproductosPageModule,DetalleproductoPageModule,AgregarproductoPageModule,HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

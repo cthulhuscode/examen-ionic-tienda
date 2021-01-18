@@ -30,6 +30,10 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     });    
     this.navCtrl.navigateBack("/login");
   }
+  irProductos()
+  {
+    this.navCtrl.navigateForward('/crudproductos');
+  }
 
   irClientes(){
      this.navCtrl.navigateForward('/clientes');
