@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'crudproductos',
     loadChildren: () => import('./crudproductos/crudproductos.module').then( m => m.CRUDProductosPageModule)
   },
@@ -23,11 +24,37 @@ const routes: Routes = [
     loadChildren: () => import('./agregarproducto/agregarproducto.module').then( m => m.AgregarproductoPageModule)
   },
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'detalleproducto',
     loadChildren: () => import('./detalleproducto/detalleproducto.module').then( m => m.DetalleproductoPageModule)
   },
+  {
+    path: 'clientes',
+    loadChildren: () => import('./clientes/clientes.module').then( m => m.ClientesPageModule)
+  },
+  {
+    path: 'agregarcliente',
+    loadChildren: () => import('./agregarcliente/agregarcliente.module').then( m => m.AgregarclientePageModule)
+  },
+  {
+    path: 'detallecliente',
+    loadChildren: () => import('./detallecliente/detallecliente.module').then( m => m.DetalleclientePageModule)
+  },
+  {
+    path: 'ventas',
+    loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasPageModule)
+  },
+  {
+    path: 'agregar-venta',
+    loadChildren: () => import('./agregar-venta/agregar-venta.module').then( m => m.AgregarVentaPageModule)
+  },
 
 ];
+
 
 @NgModule({
   imports: [

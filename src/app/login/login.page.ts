@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,27 +12,40 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  usuario: string;
-  contrasena: string;
+  respuesta:string = ""
+  records: [];
+  id: number = -1;
+  usuario: string = "enri";
+  contrasena: string = "enri";
 
-  constructor(public loginCtrl: ModalController, public alertController: AlertController ) { }
+  constructor(public loginCtrl: ModalController, public alertController: AlertController, public navCtrl: NavController, private router: Router, public http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  async entrar() {
-    if (this.usuario === 'admin' && this.contrasena === 'admin') {
-      this.loginCtrl.dismiss();
+  login() {  
+    this.navCtrl.navigateForward("/home")
+  
+    /*
+    const uri = `https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=login&usuario="${this.usuario}"&contrasena="${this.contrasena}"`;
+     this.http.get(uri).subscribe(data => {
+      const res: any = data;
+      this.records = res.records;
+      for(let record in this.records){
+        this.id = record["id"]
+      }
+    })
+
+    if (this.id > 1) {
+      this.navCtrl.navigateForward("/home")
     } else {
-      // Alert
-      const alert = await this.alertController.create({
-        header: 'Alerta',
-        subHeader: 'Inicio de sesión',
-        message: 'No se encontró este usuario',
-        buttons: ['OK']
-      });
-      await alert.present();
+      this.respuesta = 'Datos inválidos'
     }
+    */
+  }
+
+  registrarse(){
+
   }
 }
 

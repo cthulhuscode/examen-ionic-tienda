@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ventas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Buscar por fecha</ion-label>
+  </ion-item>
+  <ion-row>
+
+    <ion-col>
+      <ion-item>
+        <ion-label>Inicio</ion-label>
+        <ion-datetime [(ngModel)]="fechaInicio" display-format="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col>
+      <ion-item>
+        <ion-label>Fin</ion-label>
+        <ion-datetime [(ngModel)]="fechaFin" display-format="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+  </ion-row>
+  <ion-button expand="block" color="danger" (click)="searchByDate()">Buscar</ion-button>
+
+
+
+  <ion-list>
+    <ion-item *ngFor="let record of records">
+      <ion-label>
+        <h3>{{record.nombre}}</h3>
+        <p>Cantidad: {{record.cantidad}}</p>
+        <p>Precio total: {{record.precioTotal}}</p>
+        <p>Ganancia: {{record.ganancia}}</p>
+        <p>Fecha: {{record.fecha}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -8,16 +8,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginPageModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPageModule } from './login/login.module';
+import { ClientesPageModule } from './clientes/clientes.module';
+import { DetalleclientePageModule } from './detallecliente/detallecliente.module';
+import { AgregarclientePageModule } from './agregarcliente/agregarcliente.module';
+
 import {CRUDProductosPageModule} from './crudproductos/crudproductos.module';
 import { DetalleproductoPageModule } from './detalleproducto/detalleproducto.module';
 import { AgregarproductoPageModule } from './agregarproducto/agregarproducto.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LoginPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LoginPageModule,ClientesPageModule,DetalleclientePageModule, AgregarclientePageModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
