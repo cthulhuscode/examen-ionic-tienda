@@ -10,9 +10,12 @@
     <ion-input [(ngModel)]="usuario"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Constraseña</ion-label>
+    <ion-label position="stacked">Contraseña</ion-label>
     <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
   </ion-item>
-  <ion-button expand="block" color="danger" (click)="entrar()">Iniciar sesión</ion-button>
-  <ion-button expand="block" color="primary" (click)="entrar()">Registrarse</ion-button>
+  <ion-button expand="block" color="danger" (click)="login()">Iniciar sesión</ion-button>
+  <ion-button expand="block" color="primary" (click)="registrarse()">Registrarse</ion-button>
+
+  <ion-label position="stacked">{{respuesta}}</ion-label>
+
 </ion-content>

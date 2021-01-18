@@ -13,7 +13,7 @@ export class VentasPage implements OnInit {
   fechaInicio: string = ""
   fechaFin: string = ""
 
-  constructor(private router: Router, public http: HttpClient,) { }
+  constructor(private router: Router, public http: HttpClient) { }
 
   ngOnInit() {
     this.loadRecords()
