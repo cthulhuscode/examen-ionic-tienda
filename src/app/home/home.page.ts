@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { LoginPage } from '../login/login.page';
 import { NavController, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,10 @@ import { NavController, Platform } from '@ionic/angular';
 
 export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   backButtonSubscription;
-  constructor(public navCtrl: NavController, private platform: Platform) {
+  usuario: any
+  constructor(public navCtrl: NavController, private platform: Platform, private router: Router) {
+     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+    alert(this.usuario.usuario)
   }
 
   ngOnInit() { }
@@ -35,15 +38,19 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     this.navCtrl.navigateForward('/crudproductos');
   }
 
+  irProductos(){
+    this.navCtrl.navigateForward('/productos', {state: {usuario: this.usuario}});
+ }
+
   irClientes(){
-     this.navCtrl.navigateForward('/clientes');
+     this.navCtrl.navigateForward('/clientes', {state: {usuario: this.usuario}});
   }
 
   irVentas(){
-    this.navCtrl.navigateForward('/ventas');
+    this.navCtrl.navigateForward('/ventas', {state: {usuario: this.usuario}});
   }
 
   irAgregarVenta(){
-    this.navCtrl.navigateForward('/agregar-venta');
+    this.navCtrl.navigateForward('/agregar-venta', {state: {usuario: this.usuario}});
   }
 }
