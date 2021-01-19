@@ -11,19 +11,19 @@
 <ion-content>
   <ion-item>
     <ion-label position="stacked">Nombre de usuario</ion-label>
-    <ion-input ></ion-input>
+    <ion-input [(ngModel)]="usuario"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Constraseña</ion-label>
-    <ion-input type="password" ></ion-input>
+    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Correo</ion-label>
-    <ion-input ></ion-input>
+    <ion-input [(ngModel)]="correo"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label position="stacked">Nombre de la tienda</ion-label>
-    <ion-input ></ion-input>
+    <ion-input [(ngModel)]="nombreTienda"></ion-input>
   </ion-item>
   <ion-button expand="block" color="danger" >Iniciar sesión</ion-button>
   <ion-button expand="block" color="primary" >Registrarse</ion-button>

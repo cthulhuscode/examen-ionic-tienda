@@ -16,17 +16,17 @@ export class ClientesPage implements OnInit {
   registros: any;
   listado: [];
   total = 0;
+  usuario: any
 
-  constructor(private router: Router,
-              public http: HttpClient,
-              public modalController: ModalController,) {
-           this.cargarClientes(); }
+  constructor(private router: Router,public http: HttpClient, public modalController: ModalController,) { 
+    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+    this.cargarClientes(); 
+  }
 
    cargarClientes() {
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=listar&idDueno=1';
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=listar&idDueno='+this.usuario.id;
     this.http.get(uri).subscribe(data => {
       const datos = data;
-     // alert('Entro!!');
       this.registros = datos;
       this.listado = this.registros.records;
       this.total = this.listado.length;
