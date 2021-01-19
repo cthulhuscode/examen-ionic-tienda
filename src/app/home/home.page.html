@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tienda
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tienda</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +11,10 @@
   <div class="ion-margin">
     <ion-button class="ion-margin-top ion-margin-bottom" expand="block">Productos</ion-button>
     <ion-button class="ion-margin-top ion-margin-bottom" expand="block" (click)='irClientes()'>Clientes</ion-button>
-    <ion-button class="ion-margin-top ion-margin-bottom" expand="block">Ventas</ion-button>
-    <ion-button class="ion-margin-top ion-margin-bottom" expand="block">Cerrar sesión</ion-button>
+    <ion-button class="ion-margin-top ion-margin-bottom" expand="block" (click)='irVentas()'>Ventas</ion-button>
+    <ion-button class="ion-margin-top ion-margin-bottom" expand="block" (click)="cerrarSesion()">Cerrar sesión
+    </ion-button>
+    <ion-button class="ion-margin-top ion-margin-bottom" expand="block" (click)="irAgregarVenta()">Agregar venta
+    </ion-button>
   </div>
 </ion-content>

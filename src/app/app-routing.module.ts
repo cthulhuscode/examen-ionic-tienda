@@ -8,13 +8,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'clientes',
     loadChildren: () => import('./clientes/clientes.module').then( m => m.ClientesPageModule)
   },
@@ -29,6 +30,14 @@ const routes: Routes = [
   {
     path: 'registrarse',
     loadChildren: () => import('./registrarse/registrarse.module').then( m => m.RegistrarsePageModule)
+  },
+  {
+    path: 'ventas',
+    loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasPageModule)
+  },
+  {
+    path: 'agregar-venta',
+    loadChildren: () => import('./agregar-venta/agregar-venta.module').then( m => m.AgregarVentaPageModule)
   },
 
 ];

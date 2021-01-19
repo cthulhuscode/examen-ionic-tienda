@@ -1,28 +1,45 @@
-import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { LoginPage } from '../login/login.page';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
 
-  constructor(public modalController: ModalController,
-                     public navCtrl: NavController) {
-    this.iniciarSesion();
+export class HomePage implements OnInit, OnDestroy, AfterViewInit {
+  backButtonSubscription;
+  constructor(public navCtrl: NavController, private platform: Platform) {
   }
 
-  async iniciarSesion() {
-    const modal = await this.modalController.create({
-      component: LoginPage
+  ngOnInit() { }
+  ngAfterViewInit() {
+    this.backButtonSubscription = this.platform.backButton.subscribe(() => {
+      navigator['app'].exitApp();
     });
-    return await modal.present();
-  }  
+  }
+
+  ngOnDestroy() {
+    this.backButtonSubscription.unsubscribe();
+  }
+
+  cerrarSesion(){    
+    this.backButtonSubscription = this.platform.backButton.subscribe(() => {
+      navigator['app'].exitApp();
+    });    
+    this.navCtrl.navigateBack("/login");
+  }
 
   irClientes(){
      this.navCtrl.navigateForward('/clientes');
+  }
+
+  irVentas(){
+    this.navCtrl.navigateForward('/ventas');
+  }
+
+  irAgregarVenta(){
+    this.navCtrl.navigateForward('/agregar-venta');
   }
 }
