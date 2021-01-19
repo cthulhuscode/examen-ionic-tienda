@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Agregar producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input [(ngModel)]="nombre"></ion-input>
+          </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-input [(ngModel)]="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Cantidad</ion-label>
+            <ion-input type="number" [(ngModel)]="cantidad"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Precio de costo</ion-label>
+            <ion-input type="number" [(ngModel)]="preciodecosto"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Precio de venta</ion-label>
+            <ion-input type="number" [(ngModel)]="preciodeventa"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">URL de la fotografía</ion-label>
+            <ion-input [(ngModel)]="url"></ion-input>
+        </ion-item>
+        <img src="{{url}}" width="100%">
+        <ion-button expand="block" fill="outline" (click)="guardarProducto()">Guardar</ion-button>
+        <ion-button expand="block" fill="outline" (click)="cancelar()">Cancelar</ion-button>
+    </div>
+</ion-content>
