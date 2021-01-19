@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="item.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-input [(ngModel)]="item.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="item.cantidad"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Precio de costo</ion-label>
+      <ion-input type="number" [(ngModel)]="item.preciodecosto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Precio de venta</ion-label>
+      <ion-input type="number" [(ngModel)]="item.preciodeventa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">URL de la fotografía</ion-label>
+      <ion-input [(ngModel)]="item.fotografia"></ion-input>
+    </ion-item>
+    <img src="{{item.fotografia}}" width="100%">
+    <ion-button expand="block" fill="outline" (click)="comprarProducto(item)">Comprar</ion-button>
+    <ion-button expand="block" fill="outline" (click)="actualizarProducto(item)">Actualizar</ion-button>
+    <ion-button expand="block" fill="outline" (click)="eliminarProducto(item.id)">Eliminar</ion-button>
+    <ion-button expand="block" fill="outline" (click)="regresar()">Regresar</ion-button>
+  </div>
+</ion-content>

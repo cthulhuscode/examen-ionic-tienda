@@ -12,8 +12,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   backButtonSubscription;
   usuario: any
   constructor(public navCtrl: NavController, private platform: Platform, private router: Router) {
-     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    alert(this.usuario.usuario)
+    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
   }
 
   ngOnInit() { }
@@ -35,7 +34,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   irProductos(){
-    this.navCtrl.navigateForward('/productos', {state: {usuario: this.usuario}});
+    this.navCtrl.navigateForward('/crudproductos', {state: {usuario: this.usuario}});
  }
 
   irClientes(){
