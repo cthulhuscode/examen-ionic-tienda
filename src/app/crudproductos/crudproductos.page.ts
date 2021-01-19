@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
-import { ModalController } from "@ionic/angular";
+import { ModalController, NavController } from "@ionic/angular";
 import { AgregarproductoPage } from "../agregarproducto/agregarproducto.page";
-import { DetalleproductoPage } from "../detalleproducto/detalleproducto.page";
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -13,13 +13,17 @@ export class CRUDproductosPage {
   backButtonSubscription;
   registros: any;
   listadoBackup: any[] = [];
-  listado: any[] = []
+  listado: any[] = [];
   total = 0;
+  usuario: any;
 
   constructor(
     public http: HttpClient,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public navCtrl: NavController,
+    private router: Router
   ) {
+    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
     this.cargarProductos();
   }
 
@@ -30,7 +34,7 @@ export class CRUDproductosPage {
       const datos = data;
       this.registros = datos;
       this.listadoBackup = this.registros.records;
-      this.listado = this.listadoBackup
+      this.listado = this.listadoBackup;
       this.total = this.listado.length;
     });
   }
@@ -38,27 +42,26 @@ export class CRUDproductosPage {
   searchByName(evt) {
     this.listado = this.listadoBackup;
     const searchTerm = evt.srcElement.value;
-  
+
     if (!searchTerm) {
       return;
     }
-  
-    this.listado = this.listado.filter(currentProduct => {
+
+    this.listado = this.listado.filter((currentProduct) => {
       if (currentProduct["nombre"] && searchTerm) {
-        return (currentProduct["nombre"].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+        return (
+          currentProduct["nombre"]
+            .toLowerCase()
+            .indexOf(searchTerm.toLowerCase()) > -1
+        );
       }
-    });    
+    });
   }
 
   async editarProducto(item) {
-    const modal = await this.modalController.create({
-      component: DetalleproductoPage,
-      componentProps: { dato: item },
+    this.navCtrl.navigateForward("/detalleproducto", {
+      state: { producto: item, usuario: this.usuario },
     });
-    modal.onDidDismiss().then(() => {
-      this.cargarProductos();
-    });
-    return await modal.present();
   }
 
   async presentarAgregar() {
