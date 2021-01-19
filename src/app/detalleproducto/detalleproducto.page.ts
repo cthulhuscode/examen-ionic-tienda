@@ -3,6 +3,7 @@ import { NavParams } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalleproducto',
@@ -15,15 +16,22 @@ export class DetalleproductoPage implements OnInit {
   constructor(public navParams: NavParams,
               public http: HttpClient,
               public modalController: ModalController,
-              public alertController: AlertController) {
+              public alertController: AlertController,
+              public navCtrl: NavController) {
 this.item = navParams.get('dato');
    }
 
   ngOnInit() {
   }
+
+  comprarProducto()
+  {
+    this.navCtrl.navigateForward('/agregar-venta');
+  }
   
   actualizarProducto(item) {
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=editar&id='+item.id  +'&nombre='+item.nombre
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=editar&id='+item.id  +'&nombre='
+    +item.nombre
     + '&descripcion=' + item.descripcion
     + '&preciodecosto=' + item.preciodecosto +
     '&preciodeventa=' + item.preciodeventa +
@@ -50,7 +58,7 @@ this.item = navParams.get('dato');
   }
 
   eliminarProducto(id) {
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=eliminar$id=' + id;
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=eliminar&id=' + id;
     this.http.get(uri).subscribe(async data => {
       this.respuesta = data;
       const mensaje = this.respuesta.mensaje;

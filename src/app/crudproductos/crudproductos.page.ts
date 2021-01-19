@@ -29,6 +29,19 @@ total = 0;
       this.total = this.listado.length;
   });
   }
+  
+ searchByName()
+ {
+    const uri='https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=buscar&nombre=cho&idDueno=1';
+
+    this.http.get(uri).subscribe(data => {
+      const res: any = data;
+      this.listado = res.listado;
+    })
+
+  }
+  
+ 
   async editarProducto(item) {
     const modal = await this.modalController.create({
       component: DetalleproductoPage,

@@ -24,6 +24,7 @@ export class AgregarproductoPage implements OnInit {
     '&preciodeventa=' + this.preciodeventa +
     '&cantidad=' + this.cantidad +
     '&fotografia=' + this.url;
+    
     this.http.get(uri).subscribe(data => {
       this.respuesta = data;
       const mensaje = this.respuesta.mensaje;

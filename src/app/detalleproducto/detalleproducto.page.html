@@ -31,6 +31,7 @@
         <ion-input [(ngModel)]="item.fotografia"></ion-input>
     </ion-item>
     <img src="{{item.fotografia}}" width="100%">
+    <ion-button expand="block" fill="outline" (click)="comprarProducto()">Comprar</ion-button>
     <ion-button expand="block" fill="outline" (click)="actualizarProducto(item)">Actualizar</ion-button>
     <ion-button expand="block" fill="outline" (click)="eliminarProducto(item.id)">Eliminar</ion-button>
     <ion-button expand="block" fill="outline" (click)="regresar()">Regresar</ion-button>
