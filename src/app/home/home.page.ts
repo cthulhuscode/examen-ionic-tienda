@@ -13,7 +13,6 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   usuario: any
   constructor(public navCtrl: NavController, private platform: Platform, private router: Router) {
     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    alert(this.usuario.usuario)
   }
 
   ngOnInit() { }
@@ -33,13 +32,9 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     });    
     this.navCtrl.navigateBack("/login");
   }
-  irProductos()
-  {
-    this.navCtrl.navigateForward('/crudproductos');
-  }
 
   irProductos(){
-    this.navCtrl.navigateForward('/productos', {state: {usuario: this.usuario}});
+    this.navCtrl.navigateForward('/crudproductos', {state: {usuario: this.usuario}});
  }
 
   irClientes(){

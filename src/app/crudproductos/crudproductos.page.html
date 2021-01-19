@@ -7,35 +7,36 @@
       Productos
     </ion-title>
   </ion-toolbar>
-  <ion-searchbar color="primary" animated placeholder="Buscar producto" (ionChange)="searchByName()"></ion-searchbar>
+
 </ion-header>
 
 <ion-content>
-  
-  <div class="ion-padding">
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button (click)="presentarAgregar()">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-    <ion-list>
-      <ion-list-header color="tertiary">
-        
-       <ion-label>{{total}} Productos</ion-label>
-       </ion-list-header>
-       <ion-item *ngFor="let registro of listado" (click)="editarProducto(registro)" >
-        
-              <ion-avatar>
-                <img src="{{registro.fotografia}}">
-              </ion-avatar>  
-       <ion-label>
-       
-       <h3>{{registro.nombre}}</h3>
-       <p>{{registro.descripcion}}</p>
-       <p>${{registro.preciodeventa}}</p>
-       </ion-label>
-         
-       </ion-item>
-       </ion-list>
-  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentarAgregar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-searchbar color="primary" animated placeholder="Buscar producto" (ionChange)="searchByName($event)">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-list-header color="danger">
+      <ion-label>{{total}} Productos</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let registro of listado" (click)="editarProducto(registro)">
+
+      <ion-avatar>
+        <img src="{{registro.fotografia}}">
+      </ion-avatar>
+      <ion-label>
+
+        <h3>{{registro.nombre}}</h3>
+        <p>{{registro.descripcion}}</p>
+        <p>${{registro.preciodeventa}}</p>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
 </ion-content>
