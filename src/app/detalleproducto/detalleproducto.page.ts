@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { NavParams } from "@ionic/angular";
 import { HttpClient } from "@angular/common/http";
 import { ModalController } from "@ionic/angular";
 import { AlertController } from "@ionic/angular";
-import { NavController, Platform } from "@ionic/angular";
+import { NavController } from "@ionic/angular";
 import { Router } from "@angular/router";
 
 @Component({

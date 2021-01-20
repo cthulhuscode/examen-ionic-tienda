@@ -12,9 +12,6 @@ import { Router } from "@angular/router";
   templateUrl: "./agregar-venta.page.html",
   styleUrls: ["./agregar-venta.page.scss"],
 })
-
- 
-
 export class AgregarVentaPage implements OnInit {
   idDueno: number = 1;
   idProducto: number = -1;
@@ -37,10 +34,7 @@ export class AgregarVentaPage implements OnInit {
     this.producto = this.router.getCurrentNavigation().extras.state.producto;
   }
 
-  ngOnInit()
-  {
-    
-  }
+  ngOnInit() {}
 
   async addVenta() {
     if (this.cantidad <= 0) {
