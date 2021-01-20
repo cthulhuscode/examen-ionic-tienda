@@ -22,6 +22,8 @@ export class AgregarVentaPage implements OnInit {
   precioTotal: number = 0;
   respuesta: string;
   usuario: any;
+  cliente: any;
+  clientes: any;
 
   constructor(
     public http: HttpClient,
@@ -32,9 +34,20 @@ export class AgregarVentaPage implements OnInit {
   ) {
     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
     this.producto = this.router.getCurrentNavigation().extras.state.producto;
+    this.cargarClientes();
   }
 
   ngOnInit() {}
+
+  cargarClientes() {
+    const uri =
+      "https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=listar&idDueno=" +
+      this.usuario.id;
+    this.http.get(uri).subscribe((data) => {
+      const res: any = data;
+      this.clientes = res.records;
+    });
+  }
 
   async addVenta() {
     if (this.cantidad <= 0) {
@@ -57,7 +70,7 @@ export class AgregarVentaPage implements OnInit {
     cantidad=${this.cantidad}&
     precioTotal=${this.precioTotal}&
     ganancia=${ganancia}&
-    fecha=${fecha}`;
+    fecha=${fecha}&cliente=${this.cliente.nombre}`;
 
     this.http.get(uri).subscribe(async (data) => {
       const res: any = data;

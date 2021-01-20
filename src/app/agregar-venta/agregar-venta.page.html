@@ -16,6 +16,13 @@
   </ion-item>
 
   <ion-item>
+    <ion-label>Clientes</ion-label>
+    <ion-select [(ngModel)]="cliente">
+      <ion-select-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
     <ion-label position="stacked">Cantidad</ion-label>
     <ion-input [(ngModel)]="cantidad" type="number" (ionChange)="calculatePrecioTotal()"></ion-input>
   </ion-item>

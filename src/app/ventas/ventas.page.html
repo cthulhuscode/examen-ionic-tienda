@@ -30,8 +30,6 @@
   </ion-row>
   <ion-button expand="block" color="danger" (click)="searchByDate()">Buscar</ion-button>
 
-
-
   <ion-list>
     <ion-item *ngFor="let record of records">
       <ion-label>
@@ -40,6 +38,7 @@
         <p>Precio total: {{record.precioTotal}}</p>
         <p>Ganancia: {{record.ganancia}}</p>
         <p>Fecha: {{record.fecha}}</p>
+        <p>Cliente: {{record.cliente}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
