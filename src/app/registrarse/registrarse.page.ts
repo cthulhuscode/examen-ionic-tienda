@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ModalController } from '@ionic/angular';
+import { ModalController,AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { ModalController } from '@ionic/angular';
 export class RegistrarsePage implements OnInit {
   backButtonSubscription;
 
-  usuario: string;
+  dueno: string;
   contrasena: string;
   correo:string;
   nombreTienda:string;
@@ -22,28 +24,32 @@ export class RegistrarsePage implements OnInit {
 
   constructor(private router: Router,
               public http: HttpClient,
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              public navCtrl: NavController,
+              public alertController: AlertController) { }
 
   
-  guardarUsuario() {
-    // const uri = 'https://bdpromo1.000webhostapp.com/api.php?comando=agregar&nombre=' + this.nombre 
-    // + '&descripcion=' + this.descripcion
-    // + '&preciodecosto=' + this.preciodecosto +
-    // '&preciodeventa=' + this.preciodeventa +
-    // '&cantidad=' + this.cantidad +
-    // '&fotografia=' + this.url;
+ async guardarDueno() {
+   
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=agregar&usuario='+this.dueno+'&contrasena='+this.contrasena+'&correo='+this.correo+'&tienda='+this.nombreTienda;
 
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=agregar&usuario='
-    +this.usuario+'&contrasena='
-    +this.contrasena+'&correo='
-    +this.correo+'&tienda='+this.nombreTienda;
+   this.navCtrl.navigateForward("/login") 
+   
+    const alert = await this.alertController.create({
+          header: "Usuario añadido",
+          message: "El usuario se añadió con éxito. Ahora inicie sesión.",
+          buttons: ["OK"],
+        });
+        await alert.present();
 
     this.http.get(uri).subscribe(data => {
       this.respuesta = data;
       const mensaje = this.respuesta.mensaje;
+      console.log(uri)
+      // alert('Añadido!')
       if (!!mensaje) {
       {
-    this.modalController.dismiss();
+        this.modalController.dismiss();
       }
     }
 
