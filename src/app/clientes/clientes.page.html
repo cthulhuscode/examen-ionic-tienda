@@ -16,7 +16,7 @@
 
   <ion-searchbar color="primary" animated placeholder="Buscar cliente" (ionChange)="searchByName($event)">
   </ion-searchbar>
-  
+
   <ion-list>
     <ion-item *ngFor="let registro of listado" (click)="editarCliente(registro)">
       <ion-label>
