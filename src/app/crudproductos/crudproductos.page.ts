@@ -27,6 +27,10 @@ export class CRUDproductosPage {
     this.cargarProductos();
   }
 
+  ionViewWillEnter() {
+    this.cargarProductos();
+  }
+
   cargarProductos() {
     const uri =
       "https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=listar&idDueno=" +
@@ -66,13 +70,9 @@ export class CRUDproductosPage {
   }
 
   async presentarAgregar() {
-    const modal = await this.modalController.create({
-      component: AgregarproductoPage,
+    this.navCtrl.navigateForward("/agregarproducto", {
+      state: { usuario: this.usuario },
     });
-    modal.onDidDismiss().then(() => {
-      this.cargarProductos();
-    });
-    return await modal.present();
   }
   salir() {
     navigator["app"].exitApp();

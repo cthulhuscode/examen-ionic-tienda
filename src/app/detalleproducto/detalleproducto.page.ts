@@ -63,7 +63,7 @@ export class DetalleproductoPage implements OnInit {
             buttons: ["OK"],
           });
           await alert.present();
-          this.modalController.dismiss();
+          this.navCtrl.navigateBack("/crudproductos");
         }
       }
     });
@@ -85,7 +85,7 @@ export class DetalleproductoPage implements OnInit {
             buttons: ["OK"],
           });
           await alert.present();
-          this.modalController.dismiss();
+          this.navCtrl.navigateBack("/crudproductos");
         }
       }
     });

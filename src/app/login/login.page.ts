@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     public http: HttpClient
   ) {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.objetoUsuario = null;
     this.usuario = "";
     this.contrasena = "";
