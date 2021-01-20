@@ -29,7 +29,8 @@ export class CRUDproductosPage {
 
   cargarProductos() {
     const uri =
-      "https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=listar&idDueno=1";
+      "https://appinventor2020.000webhostapp.com/tienda_api/productos.php?comando=listar&idDueno=" +
+      this.usuario.id;
     this.http.get(uri).subscribe((data) => {
       const datos = data;
       this.registros = datos;

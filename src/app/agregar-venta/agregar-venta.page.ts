@@ -34,8 +34,7 @@ export class AgregarVentaPage implements OnInit {
     this.producto = this.router.getCurrentNavigation().extras.state.producto;
   }
 
-  
-   ngOnInit() {}
+  ngOnInit() {}
 
   async addVenta() {
     if (this.cantidad <= 0) {
@@ -100,5 +99,4 @@ export class AgregarVentaPage implements OnInit {
       this.precioTotal = this.cantidad * this.producto.preciodeventa;
     else this.precioTotal = 0;
   }
-
 }

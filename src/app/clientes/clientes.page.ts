@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ModalController } from '@ionic/angular';
+import { AngularDelegate, ModalController } from '@ionic/angular';
 import { AgregarclientePage } from '../agregarcliente/agregarcliente.page';
 import { DetalleclientePage } from '../detallecliente/detallecliente.page';
 
@@ -14,7 +14,8 @@ import { DetalleclientePage } from '../detallecliente/detallecliente.page';
 export class ClientesPage implements OnInit {
   backButtonSubscription;
   registros: any;
-  listado: [];
+  listadoBackup: any[] = [];
+  listado: any[] = [];
   total = 0;
   usuario: any
 
@@ -28,9 +29,29 @@ export class ClientesPage implements OnInit {
     this.http.get(uri).subscribe(data => {
       const datos = data;
       this.registros = datos;
-      this.listado = this.registros.records;
+      this.listadoBackup = this.registros.records
+      this.listado = this.listadoBackup;
       this.total = this.listado.length;
-  });
+    });
+  }
+
+  searchByName(evt) {
+    this.listado = this.listadoBackup;
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      return;
+    }
+
+    this.listado = this.listado.filter((currentClient) => {
+      if (currentClient["nombre"] && searchTerm) {
+        return (
+          currentClient["nombre"]
+            .toLowerCase()
+            .indexOf(searchTerm.toLowerCase()) > -1
+        );
+      }
+    });
   }
 
     async editarCliente(item) {
