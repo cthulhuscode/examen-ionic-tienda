@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-agregarcliente',
@@ -13,12 +15,16 @@ export class AgregarclientePage implements OnInit {
   direccion: string;
   telefono:number;
   correo:string;
+  usuario:any;
 
   url = '';
   respuesta: any;
 
   constructor(public http: HttpClient,
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              private router: Router,) {
+                 this.usuario = this.router.getCurrentNavigation().extras.state.usuario;}
+                 
   guardarCliente() {
     // const uri = 'https://bdpromo1.000webhostapp.com/api.php?comando=agregar&nombre=' + this.nombre 
     // + '&descripcion=' + this.descripcion
@@ -27,7 +33,7 @@ export class AgregarclientePage implements OnInit {
     // '&cantidad=' + this.cantidad +
     // '&fotografia=' + this.url;
 
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=agregar&idDueno=1&nombre='
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=agregar&idDueno='+this.usuario.id+'&nombre='
     +this.nombre+
     '&direccion='+this.direccion
     +'&telefono='+this.telefono
