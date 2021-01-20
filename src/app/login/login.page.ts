@@ -17,7 +17,11 @@ export class LoginPage implements OnInit {
   usuario: string = "";
   contrasena: string = "";
 
-  constructor(public loginCtrl: ModalController, public alertController: AlertController, public navCtrl: NavController, private router: Router, public http: HttpClient) { }
+  constructor(public loginCtrl: ModalController,
+              public alertController: AlertController, 
+              public navCtrl: NavController, 
+              private router: Router, 
+              public http: HttpClient) { }
 
   ngOnInit() {
     this.objetoUsuario = null
