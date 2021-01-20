@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     this.objetoUsuario = null
     this.usuario = "";
     this.contrasena = "";
-    this.objetoUsuario = null;
+  //this.objetoUsuario = null;
   }
 
   login() {    

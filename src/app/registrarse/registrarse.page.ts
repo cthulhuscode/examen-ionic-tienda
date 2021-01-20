@@ -31,7 +31,7 @@ export class RegistrarsePage implements OnInit {
   
  async guardarDueno() {
    
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=agregar&dueno=+this.dueno+&contrasena=+this.contrasena+&correo=+this.correo+&tienda=+this.nombreTienda';
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=agregar&usuario='+this.dueno+'&contrasena='+this.contrasena+'&correo='+this.correo+'&tienda='+this.nombreTienda;
 
    this.navCtrl.navigateForward("/login") 
    
