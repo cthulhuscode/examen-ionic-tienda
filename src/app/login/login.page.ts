@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -46,8 +46,10 @@ export class LoginPage implements OnInit {
     this.objetoUsuario = null;
   }
 
-  registrarse(){
+ 
 
+  async registrarse(){
+     this.navCtrl.navigateForward('/registrarse');
   }
 }
 
