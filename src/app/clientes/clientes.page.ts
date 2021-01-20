@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AngularDelegate, ModalController } from '@ionic/angular';
+import { AngularDelegate, ModalController,NavController, } from '@ionic/angular';
 import { AgregarclientePage } from '../agregarcliente/agregarcliente.page';
 import { DetalleclientePage } from '../detallecliente/detallecliente.page';
 
@@ -17,9 +17,12 @@ export class ClientesPage implements OnInit {
   listadoBackup: any[] = [];
   listado: any[] = [];
   total = 0;
-  usuario: any
+  usuario: any;
 
-  constructor(private router: Router,public http: HttpClient, public modalController: ModalController,) { 
+  constructor(private router: Router,
+              public http: HttpClient, 
+              public modalController: ModalController,
+              public navCtrl: NavController,) { 
     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
     this.cargarClientes(); 
   }
@@ -33,6 +36,8 @@ export class ClientesPage implements OnInit {
       this.listado = this.listadoBackup;
       this.total = this.listado.length;
     });
+
+   
   }
 
   searchByName(evt) {
@@ -67,17 +72,17 @@ export class ClientesPage implements OnInit {
   }
 
    async presentarAgregar() {
-    const modal = await this.modalController.create({
-      component: AgregarclientePage
+   this.navCtrl.navigateForward("/agregarcliente", {
+      state: { usuario: this.usuario },
     });
-    modal.onDidDismiss()
-    .then(() => {
-      this.cargarClientes();
-  });
-    return await modal.present();
   }
+
   salir() {
     navigator['app'].exitApp();
+  }
+
+  ionViewWillEnter() {
+    this.cargarClientes();
   }
 
   ngOnInit() {

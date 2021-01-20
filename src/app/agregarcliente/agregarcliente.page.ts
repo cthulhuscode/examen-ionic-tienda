@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ModalController } from '@ionic/angular';
+import { ModalController,NavController, AlertController} from '@ionic/angular';
 import { Router } from "@angular/router";
 
 
@@ -22,9 +22,11 @@ export class AgregarclientePage implements OnInit {
 
   constructor(public http: HttpClient,
               public modalController: ModalController,
-              private router: Router,) {
-                 this.usuario = this.router.getCurrentNavigation().extras.state.usuario;}
-                 
+              private router: Router,
+              public navCtrl: NavController,
+              public alertController: AlertController) {
+                this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+               }
   guardarCliente() {
     // const uri = 'https://bdpromo1.000webhostapp.com/api.php?comando=agregar&nombre=' + this.nombre 
     // + '&descripcion=' + this.descripcion
@@ -39,20 +41,24 @@ export class AgregarclientePage implements OnInit {
     +'&telefono='+this.telefono
     +'&correo='+this.correo;
 
-    this.http.get(uri).subscribe(data => {
+    this.http.get(uri).subscribe(data =>  {
       this.respuesta = data;
       const mensaje = this.respuesta.mensaje;
-      if (!!mensaje) {
-      {
-    this.modalController.dismiss();
-      }
-    }
+      
+    //   const alert = await this.alertController.create({
+    //   header: "Cliente añadido",
+    //   message: mensaje,
+    //   buttons: ["OK"],
+    // });
+    // await alert.present();
+
+       this.navCtrl.navigateForward("/clientes");
 
   });
   }
 
   cancelar() {
-this.modalController.dismiss();
+  this.modalController.dismiss();
 }
 
   ngOnInit() {
