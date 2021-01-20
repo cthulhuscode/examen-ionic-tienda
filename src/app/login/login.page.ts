@@ -51,5 +51,7 @@ export class LoginPage implements OnInit {
     this.objetoUsuario = null;
   }
 
-  registrarse() {}
+  async registrarse() {
+    this.navCtrl.navigateForward("/registrarse");
+  }
 }

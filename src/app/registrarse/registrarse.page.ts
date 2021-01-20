@@ -1,25 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 
+
 @Component({
-  selector: 'app-agregarcliente',
-  templateUrl: './agregarcliente.page.html',
-  styleUrls: ['./agregarcliente.page.scss'],
+  selector: 'app-registrarse',
+  templateUrl: './registrarse.page.html',
+  styleUrls: ['./registrarse.page.scss'],
 })
-export class AgregarclientePage implements OnInit {
-  // id:number;
-  nombre: string;
-  direccion: string;
-  telefono:number;
+export class RegistrarsePage implements OnInit {
+  backButtonSubscription;
+
+  usuario: string;
+  contrasena: string;
   correo:string;
+  nombreTienda:string;
 
   url = '';
   respuesta: any;
 
-  constructor(public http: HttpClient,
+  constructor(private router: Router,
+              public http: HttpClient,
               public modalController: ModalController) { }
-  guardarCliente() {
+
+  
+  guardarUsuario() {
     // const uri = 'https://bdpromo1.000webhostapp.com/api.php?comando=agregar&nombre=' + this.nombre 
     // + '&descripcion=' + this.descripcion
     // + '&preciodecosto=' + this.preciodecosto +
@@ -27,11 +33,10 @@ export class AgregarclientePage implements OnInit {
     // '&cantidad=' + this.cantidad +
     // '&fotografia=' + this.url;
 
-    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/clientes.php?comando=agregar&idDueno=1&nombre='
-    +this.nombre+
-    '&direccion='+this.direccion
-    +'&telefono='+this.telefono
-    +'&correo='+this.correo;
+    const uri = 'https://appinventor2020.000webhostapp.com/tienda_api/duenos.php?comando=agregar&usuario='
+    +this.usuario+'&contrasena='
+    +this.contrasena+'&correo='
+    +this.correo+'&tienda='+this.nombreTienda;
 
     this.http.get(uri).subscribe(data => {
       this.respuesta = data;
@@ -44,10 +49,6 @@ export class AgregarclientePage implements OnInit {
 
   });
   }
-
-  cancelar() {
-this.modalController.dismiss();
-}
 
   ngOnInit() {
   }
